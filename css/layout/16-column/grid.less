@@ -1,0 +1,22 @@
+
+// Fixed (940px)
+#hb-grid > #fixed > .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth);
+
+// Fluid (940px)
+#hb-grid > #fluid > .generate(@gridColumns, @fluidGridColumnWidth, @fluidGridGutterWidth);
+
+// Tables (940px)
+#hb-grid > #table > .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth);
+
+
+// Container (centered, fixed-width layouts)
+.hb-container {
+  	.hb-container-fixed();
+}
+
+// Fluid layouts (left aligned, with sidebar, min- & max-width content)
+.hb-container-fluid {
+  	padding-left: @gridGutterWidth;
+  	padding-right: @gridGutterWidth;
+  	.hb-clearfix();
+}

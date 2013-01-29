@@ -1,0 +1,32 @@
+
+// FORM FIELD FEEDBACK STATES
+// --------------------------
+
+// Warning
+.hb-control-group.hb-warning {
+  	.hb-formFieldState(@warningText, @warningText, @warningBackground);
+}
+
+// Error
+.hb-control-group.hb-error {
+  	.hb-formFieldState(@errorText, @errorText, @errorBackground);
+}
+
+// Success
+.hb-control-group.hb-success {
+  	.hb-formFieldState(@successText, @successText, @successBackground);
+}
+
+// HTML5 invalid states
+// Shares styles with the .hb-control-group.hb-error above
+input:focus:required:invalid,
+textarea:focus:required:invalid,
+select:focus:required:invalid {
+  	color: #b94a48;
+  	border-color: #ee5f5b;
+
+  	&:focus {
+    	border-color: darken(#ee5f5b, 10%);
+    	.hb-box-shadow(0 0 6px lighten(#ee5f5b, 20%));
+  	}
+}

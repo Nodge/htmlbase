@@ -1,0 +1,17 @@
+// For clearing floats like a boss h5bp.com/q
+.hb-clearfix() {
+    .ie6 &, .ie7 & {
+		zoom: 1;
+	}
+
+	&:before, &:after {
+    	display: table;
+    	content: "";
+		height: 0; // opera contenteditable fix
+		font: 0/0 a; // opera contenteditable fix
+	}
+
+  	&:after {
+    	clear: both;
+  	}
+}

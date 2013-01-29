@@ -1,0 +1,39 @@
+
+// CHECKBOXES & RADIOS
+// -------------------
+
+// Indent the labels to position radios/checkboxes as hanging
+.hb-radio, .hb-checkbox {
+  	padding-left: 18px;
+}
+
+.hb-radio input[type="radio"],
+.hb-checkbox input[type="checkbox"] {
+  	float: left;
+  	margin-left: -18px;
+}
+
+// Move the options list down to align with labels
+.hb-controls > .hb-radio:first-child,
+.hb-controls > .hb-checkbox:first-child {
+  	padding-top: 5px; // has to be padding because margin collaspes
+}
+
+// Radios and checkboxes on same line
+.hb-radio.hb-inline,
+.hb-checkbox.hb-inline {
+  	display: inline-block;
+  	margin-bottom: 0;
+  	vertical-align: middle;
+}
+
+.hb-radio.hb-inline + .hb-radio.hb-inline,
+.hb-checkbox.hb-inline + .hb-checkbox.hb-inline {
+  	margin-left: 10px; // space out consecutive inline controls
+}
+
+// But don't forget to remove their padding on first-child
+.hb-controls > .hb-radio.hb-inline:first-child,
+.hb-controls > .hb-checkbox.hb-inline:first-child {
+  	padding-top: 0;
+}

@@ -1,0 +1,207 @@
+
+// Center-align a block level element
+.hb-center-block() {
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
+.hb-container-fixed() {
+  	width: @gridRowWidth;
+  	margin-left: auto;
+  	margin-right: auto;
+  	.hb-clearfix();
+}
+
+// Grid system
+#hb-grid {
+
+    // Fixed grid system
+    #fixed {
+		// Setup the mixins to be used
+		.columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @columns) {
+			width: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1));
+		}
+
+		.offset(@gridColumnWidth, @gridGutterWidth, @columns) {
+			margin-left: (@gridColumnWidth * @columns) + (@gridGutterWidth * (@columns - 1)) + (@gridGutterWidth * 2);
+		}
+
+		.gridColumn(@gridGutterWidth) {
+			float: left;
+			margin-left: @gridGutterWidth;
+		}
+
+		// Take these values and mixins, and make 'em do their thang
+		.generate(@gridColumns, @gridColumnWidth, @gridGutterWidth) {
+			// Row surrounds the columns
+			.hb-row {
+				margin-left: @gridGutterWidth * -1;
+				.hb-clearfix();
+			}
+
+			// Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7, thanks @dhg)
+			[class*="hb-span"] {
+				#hb-grid > #fixed > .gridColumn(@gridGutterWidth);
+			}
+
+			// Default columns
+			.hb-span1     { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 1); }
+			.hb-span2     { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 2); }
+			.hb-span3     { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 3); }
+			.hb-span4     { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 4); }
+			.hb-span5     { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 5); }
+			.hb-span6     { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 6); }
+			.hb-span7     { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 7); }
+			.hb-span8     { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 8); }
+			.hb-span9     { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 9); }
+			.hb-span10    { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 10); }
+			.hb-span11    { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 11); }
+			.hb-span12,
+			.hb-container { #hb-grid > #fixed > .columns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 12); }
+
+			// Offset column options
+			.hb-offset1   { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 1); }
+			.hb-offset2   { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 2); }
+			.hb-offset3   { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 3); }
+			.hb-offset4   { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 4); }
+			.hb-offset5   { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 5); }
+			.hb-offset6   { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 6); }
+			.hb-offset7   { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 7); }
+			.hb-offset8   { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 8); }
+			.hb-offset9   { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 9); }
+			.hb-offset10  { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 10); }
+			.hb-offset11  { #hb-grid > #fixed > .offset(@gridColumnWidth, @gridGutterWidth, 11); }
+		}
+  	}
+
+  	// Fluid grid system
+   	#fluid {
+   		// Setup the mixins to be used
+   		.columns(@fluidGridGutterWidth, @fluidGridColumnWidth, @columns) {
+   			width: 1% * (@fluidGridColumnWidth * @columns) + (@fluidGridGutterWidth * (@columns - 1));
+   		}
+
+   		.gridColumn(@fluidGridGutterWidth) {
+   			float: left;
+   			margin-left: @fluidGridGutterWidth;
+   		}
+
+   		// Take these values and mixins, and make 'em do their thang
+   		.generate(@gridColumns, @fluidGridColumnWidth, @fluidGridGutterWidth) {
+   			// Row surrounds the columns
+   			.hb-row-fluid {
+   				width: 100%;
+   				.hb-clearfix();
+
+   				// Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7, thanks @dhg)
+   				> [class*="hb-span"] {
+   					#hb-grid > #fluid > .gridColumn(@fluidGridGutterWidth);
+   				}
+
+   				> [class*="hb-span"]:first-child {
+   					margin-left: 0;
+   				}
+
+   				 // Default columns
+   				.hb-span1     { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 1); }
+   				.hb-span2     { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 2); }
+   				.hb-span3     { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 3); }
+   				.hb-span4     { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 4); }
+   				.hb-span5     { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 5); }
+   				.hb-span6     { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 6); }
+   				.hb-span7     { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 7); }
+   				.hb-span8     { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 8); }
+   				.hb-span9     { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 9); }
+   				.hb-span10    { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 10); }
+   				.hb-span11    { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 11); }
+   				.hb-span12    { #hb-grid > #fluid > .columns(@fluidGridGutterWidth, @fluidGridColumnWidth, 12); }
+   			}
+   		}
+   	}
+
+   	// Input grid system
+	#input {
+		.inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, @columns) {
+			width: ((@gridColumnWidth) * @columns) + (@gridGutterWidth * (@columns - 1)) - 10;
+		}
+
+		.generate(@gridColumns, @gridColumnWidth, @gridGutterWidth) {
+			input,
+			textarea,
+			.hb-uneditable-input {
+				&.hb-span1     { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 1); }
+				&.hb-span2     { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 2); }
+				&.hb-span3     { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 3); }
+				&.hb-span4     { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 4); }
+				&.hb-span5     { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 5); }
+				&.hb-span6     { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 6); }
+				&.hb-span7     { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 7); }
+				&.hb-span8     { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 8); }
+				&.hb-span9     { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 9); }
+				&.hb-span10    { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 10); }
+				&.hb-span11    { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 11); }
+				&.hb-span12    { #hb-grid > #input > .inputColumns(@gridGutterWidth, @gridColumnWidth, @gridRowWidth, 12); }
+			}
+		}
+	}
+
+	// Table grid system
+	#table {
+		// Change the columns
+        .tableColumns(@gridColumnWidth, @gridGutterWidth, @columnSpan: 1) {
+          	float: none;
+          	width: ((@gridColumnWidth) * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1)) - 16;
+          	margin-left: 0;
+        }
+
+        .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth) {
+			table {
+				.hb-span1     { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 1); }
+				.hb-span2     { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 2); }
+				.hb-span3     { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 3); }
+				.hb-span4     { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 4); }
+				.hb-span5     { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 5); }
+				.hb-span6     { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 6); }
+				.hb-span7     { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 7); }
+				.hb-span8     { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 8); }
+				.hb-span9     { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 9); }
+				.hb-span10    { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 10); }
+				.hb-span11    { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 11); }
+				.hb-span12    { #hb-grid > #table > .tableColumns(@gridColumnWidth, @gridGutterWidth, 12); }
+			}
+		}
+	}
+
+	// Show grid
+	.show() {
+        margin-top: 10px;
+        margin-bottom: 20px;
+
+        [class*="hb-span"] {
+        	background-color: #eee;
+          	text-align: center;
+          	.hb-border-radius(3px);
+          	min-height: 30px;
+          	line-height: 30px;
+        }
+
+        &:hover [class*="hb-span"] {
+          	background: #ddd;
+        }
+
+        .hb-show-grid {
+          	margin-top: 0;
+          	margin-bottom: 0;
+        }
+
+        .hb-show-grid [class*="hb-span"] {
+          	background-color: #ccc;
+        }
+	}
+}
+
+
+
+
+

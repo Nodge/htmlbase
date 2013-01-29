@@ -1,0 +1,25 @@
+
+// INPUT SIZES
+// -----------
+
+// General classes for quick sizes
+.hb-input-mini       { width: 60px; }
+.hb-input-small      { width: 90px; }
+.hb-input-medium     { width: 150px; }
+.hb-input-xmedium     { width: 180px; }
+.hb-input-large      { width: 210px; }
+.hb-input-xlarge     { width: 270px; }
+.hb-input-xxlarge    { width: 530px; }
+
+// Grid style input sizes
+.hb-input[class*="hb-span"],
+.hb-select[class*="hb-span"],
+.hb-textarea[class*="hb-span"],
+.hb-uneditable-input {
+	float: none;
+  	margin-left: 0;
+}
+
+
+// GRID SIZING FOR INPUTS
+#hb-grid > #input > .generate(@gridColumns, @gridColumnWidth, @gridGutterWidth);

@@ -1,0 +1,27 @@
+
+.hb-text {
+
+	img {
+		margin: @baseLineHeight / 2 @baseLineHeight;
+
+		&.hb-left, &[align="left"] {
+			margin-left: 0;
+		}
+
+		&.hb-right, &[align="right"] {
+			margin-right: 0;
+		}
+	}
+
+	table {
+		.hb-table;
+		.hb-table-bordered;
+		.hb-table-striped;
+		.hb-table-hover;
+
+		&.hb-table-condensed {
+			.hb-table-condensed;
+		}
+	}
+
+}

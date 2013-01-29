@@ -1,0 +1,205 @@
+
+// Base styles
+// --------------------------------------------------
+
+// Core
+.hb-btn {
+	display: inline-block;
+	padding: 4px 13px;
+	font-size: @baseFontSize;
+	line-height: @baseLineHeight;
+	color: @buttonColor;
+	text-align: center;
+	text-shadow: 0 1px 1px rgba(255,255,255,.75);
+	vertical-align: middle;
+	.hb-buttonBackground(@buttonBackground, darken(@buttonBackground, 10%));
+	border: 1px solid @buttonBorder;
+    border-bottom-color: darken(@buttonBorder, 13%);
+	.hb-border-radius(4px);
+	@shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	.hb-box-shadow(@shadow);
+	cursor: pointer;
+
+	a&, a&:visited {
+		color: @buttonColor;
+		text-decoration: none;
+	}
+
+	input& {
+		margin-bottom: 0;
+	}
+
+	// Give IE7 some love
+	.hb-reset-filter();
+	.hb-ie7-restore-left-whitespace();
+}
+
+// Hover state
+.hb-btn.hb-hover, .hb-btn:hover {
+  	color: @buttonHoverColor;
+  	text-decoration: none;
+  	background-color: darken(@buttonBackground, 10%);
+  	background-position: 0 -15px;
+
+  	// transition is only when going to hover, otherwise the background
+  	// behind the gradient (there for IE<=9 fallback) gets mismatched
+  	.hb-transition(background-position .1s linear);
+}
+
+// Focus state for keyboard and accessibility
+.hb-btn:focus {
+  	.hb-tab-focus();
+}
+
+// Active state
+.hb-btn.hb-active, .hb-btn:active {
+  	background-image: none;
+  	@shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+  	.hb-box-shadow(@shadow);
+  	background-color: darken(@buttonBackground, 10%);
+  	//color: rgba(0,0,0,.5);
+  	outline: 0;
+
+  	.ie6 &, .ie7 &, .ie8 & {
+    	background-color: darken(@buttonBackground, 15%);
+    }
+}
+
+// Disabled state
+.hb-btn.disabled,
+.hb-btn[disabled] {
+	cursor: default;
+	background-image: none;
+	background-color: darken(@buttonBackground, 10%);
+	.hb-opacity(65);
+	.hb-box-shadow(none);
+}
+
+
+// Button Sizes
+// --------------------------------------------------
+
+// Large
+.hb-btn-large {
+	padding: 9px 19px;
+	font-size: @baseFontSize + 2px;
+	line-height: normal;
+	.hb-border-radius(5px);
+
+	.hb-icon {
+		margin-top: 1px;
+	}
+}
+
+// Small
+.hb-btn-small {
+  	padding: 5px 12px;
+  	font-size: @baseFontSize - 2px;
+  	line-height: @baseLineHeight - 2px;
+
+	.hb-icon {
+  		margin-top: -1px;
+  	}
+}
+
+// Mini
+.hb-btn-mini {
+  	padding: 2px 6px;
+  	font-size: @baseFontSize - 2px;
+  	line-height: @baseLineHeight - 4px;
+}
+
+// Width to 100%
+.hb-btn-block {
+	display: block;
+}
+
+// Alternate buttons
+// --------------------------------------------------
+
+// Set text color
+// -------------------------
+.hb-btn-primary,
+.hb-btn-warning,
+.hb-btn-danger,
+.hb-btn-success,
+.hb-btn-info,
+.hb-btn-inverse {
+    &, &:hover {
+  		text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  		color: @defaultButtonColor;
+
+  		a&, a&:visited {
+			color: @defaultButtonColor;
+		}
+  	}
+}
+
+// Provide *some* extra contrast for those who can get it
+.hb-btn-primary.hb-active,
+.hb-btn-warning.hb-active,
+.hb-btn-danger.hb-active,
+.hb-btn-success.hb-active,
+.hb-btn-info.hb-active,
+.hb-btn-inverse.hb-active {
+  	color: rgba(255,255,255,.75);
+}
+
+// Set the backgrounds
+// -------------------------
+.hb-btn-primary {
+  	.hb-buttonBackground(@primaryButtonBackground, spin(@primaryButtonBackground, 20));
+}
+
+// Warning appears are orange
+.hb-btn-warning {
+  	.hb-buttonBackground(lighten(@warningButtonBackground, 15%), @warningButtonBackground);
+}
+
+// Danger and error appear as red
+.hb-btn-danger {
+  	.hb-buttonBackground(lighten(@dangerButtonBackground, 15%), @dangerButtonBackground);
+}
+
+// Success appears as green
+.hb-btn-success {
+  	.hb-buttonBackground(lighten(@successButtonBackground, 15%), @successButtonBackground);
+}
+
+// Info appears as a neutral blue
+.hb-btn-info {
+  	.hb-buttonBackground(lighten(@infoButtonBackground, 15%), @infoButtonBackground);
+}
+
+// Inverse appears as dark gray
+.hb-btn-inverse {
+  	.hb-buttonBackground(lighten(@inverseButtonBackground, 15%), @inverseButtonBackground);
+}
+
+
+// Cross-browser Jank
+// --------------------------------------------------
+
+button.hb-btn,
+input[type="submit"].hb-btn {
+  	&::-moz-focus-inner {
+  		padding: 0;
+    	border: 0;
+  	}
+
+	.ie6 &, .ie7 & {
+		// IE7 has some default padding on button controls
+		padding-top: 2px;
+		padding-bottom: 2px;
+
+		&.hb-btn-large {
+			padding-top: 7px;
+			padding-bottom: 7px;
+		}
+
+		&.hb-btn-small {
+			padding-top: 3px;
+			padding-bottom: 3px;
+		}
+  	}
+}

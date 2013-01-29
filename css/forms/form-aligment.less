@@ -1,0 +1,77 @@
+
+// HORIZONTAL & VERTICAL FORMS
+// ---------------------------
+
+// Common properties
+// -----------------
+
+.hb-form-inline,
+.hb-form-horizontal {
+	.hb-input,
+	.hb-textarea,
+	.hb-select,
+	.hb-help-inline,
+	.hb-uneditable-input {
+		display: inline-block;
+		margin-bottom: 0;
+	}
+}
+
+.hb-form-inline .hb-label,
+.hb-form-inline .hb-input-append,
+.hb-form-inline .hb-input-prepend {
+  	display: inline-block;
+}
+
+// Make the prepend and append add-on vertical-align: middle;
+.hb-form-inline .hb-input-prepend .hb-add-on,
+.hb-form-inline .hb-input-append .hb-add-on {
+  	vertical-align: middle;
+}
+
+.hb-form-inline .hb-radio,
+.hb-form-inline .hb-checkbox {
+	margin-bottom: 0;
+	vertical-align: middle;
+}
+
+// Margin to space out fieldsets
+.hb-control-group {
+  	margin-bottom: @baseLineHeight / 2;
+}
+
+
+// Horizontal-specific styles
+// --------------------------
+
+.hb-form-horizontal {
+  	// Legend collapses margin, so we're relegated to padding
+  	.hb-legend + .hb-control-group {
+    	margin-top: @baseLineHeight;
+    	-webkit-margin-top-collapse: separate;
+	}
+
+  	// Increase spacing between groups
+  	.hb-control-group {
+    	margin-bottom: @baseLineHeight;
+    	.hb-clearfix();
+  	}
+
+  	// Float the labels left
+  	.hb-control-group > .hb-label {
+    	float: left;
+    	width: 140px;
+    	padding-top: 5px;
+    	text-align: right;
+  	}
+
+  	// Move over all input controls and content
+  	.hb-controls {
+    	margin-left: 160px;
+  	}
+
+  	// Move over buttons in .hb-form-actions to align with .hb-controls
+  	.hb-form-actions {
+    	padding-left: 160px;
+  	}
+}

@@ -1,0 +1,85 @@
+
+// INPUT GROUPS
+// ------------
+
+// Allow us to put symbols and text within the input field for a cleaner look
+.hb-input-prepend,
+.hb-input-append {
+  	margin-bottom: 5px;
+  	.hb-clearfix(); // Clear the float to prevent wrapping
+
+  	.hb-input,
+  	.hb-uneditable-input {
+	    .hb-border-radius(0 3px 3px 0);
+
+    	&:focus {
+			position: relative;
+      		z-index: 2;
+    	}
+  	}
+
+  	.hb-uneditable-input {
+    	border-left-color: #ccc;
+  	}
+
+  	.hb-add-on {
+    	float: left;
+		display: block;
+		width: auto;
+		min-width: 16px;
+		height: @baseLineHeight;
+		margin-right: -1px;
+		padding: 4px 5px;
+		font-weight: normal;
+		line-height: @baseLineHeight;
+		color: @formAddOnColor;
+		text-align: center;
+		text-shadow: 0 1px 0 @formAddOnTextShadow;
+		background-color: @formAddOnBackground;
+		border: 1px solid @formAddOnBorderColor;
+		.hb-border-radius(3px 0 0 3px);
+  	}
+
+  	.hb-active {
+	    background-color: @formActiveAddOnBackground;
+	    border-color: darken(@formActiveAddOnBackground, 30);
+  	}
+}
+
+.hb-input-prepend {
+  	.hb-add-on {
+  	    .ie6 &, .ie7 & {
+    		margin-top: 1px; /* IE6-7 */
+    	}
+  	}
+}
+
+.hb-input-append {
+  	.hb-input,
+  	.hb-uneditable-input {
+    	float: left;
+    	.hb-border-radius(3px 0 0 3px);
+  	}
+
+  	.hb-uneditable-input {
+    	border-right-color: @formUneditableBorder;
+  	}
+
+  	.hb-add-on {
+    	margin-right: 0;
+    	margin-left: -1px;
+    	.hb-border-radius(0 3px 3px 0);
+  	}
+
+  	.hb-input:first-child {
+  	    .ie6 &, .ie7 & {
+    		// In IE7, having a hasLayout container (from clearfix's zoom:1) can make the first input
+    		// inherit the sum of its ancestors' margins.
+    		margin-left: -160px;
+
+    		&+.hb-add-on {
+      			margin-left: -21px;
+    		}
+    	}
+	}
+}

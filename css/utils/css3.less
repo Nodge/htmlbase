@@ -1,0 +1,165 @@
+
+// Border Radius
+.hb-border-radius(@radius) {
+	-webkit-border-radius: @radius;
+     -khtml-border-radius: @radius;
+       -moz-border-radius: @radius;
+         -o-border-radius: @radius;
+            border-radius: @radius;
+}
+
+// Drop shadows
+.hb-box-shadow(@shadow) {
+  	-webkit-box-shadow: @shadow;
+	 -khtml-box-shadow: @shadow;
+	   -moz-box-shadow: @shadow;
+		 -o-box-shadow: @shadow;
+			box-shadow: @shadow;
+}
+
+// Transitions
+.hb-transition(@transition) {
+  	-webkit-transition: @transition;
+       -moz-transition: @transition;
+        -ms-transition: @transition;
+         -o-transition: @transition;
+            transition: @transition;
+}
+
+.hb-transform-transition(@transition) {
+	-webkit-transition: -webkit-transform @transition;
+	   -moz-transition:    -moz-transform @transition;
+	    -ms-transition:     -ms-transform @transition;
+	     -o-transition:      -o-transform @transition;
+	        transition:         transform @transition;
+}
+
+// Transformations
+.hb-transform(@t) {
+	-webkit-transform: @t;
+	   -moz-transform: @t;
+	    -ms-transform: @t;
+	     -o-transform: @t;
+	        transform: @t;
+}
+
+.hb-rotate(@degrees) {
+	.hb-transform(rotate(@degrees));
+}
+
+.hb-scale(@ratio) {
+	.hb-transform(scale(@ratio));
+}
+
+.hb-translate(@x: 0, @y: 0) {
+	.hb-transform(translate(@x, @y));
+}
+
+.hb-translate3d(@x: 0, @y: 0, @z: 0) {
+	.hb-transform(translate3d(@x, @y, @z));
+}
+
+.skew(@x: 0, @y: 0) {
+    .hb-transform(translate(@x, @y));
+    .hb-transform(skew(@x, @y));
+}
+
+.hb-flipH() {
+	.hb-transform(scaleX(-1));
+	-ms-filter: "FlipH";
+	    filter: FlipH;
+}
+
+// Background clipping
+// Heads up: FF 3.6 and under need "padding" instead of "padding-box"
+.hb-background-clip(@clip) {
+	-webkit-background-clip: @clip;
+       -moz-background-clip: @clip;
+            background-clip: @clip;
+}
+
+// Background sizing
+.hb-background-size(@size) {
+	-webkit-background-size: @size;
+       -moz-background-size: @size;
+         -o-background-size: @size;
+            background-size: @size;
+}
+
+// Box sizing
+.hb-box-sizing(@boxmodel) {
+	-webkit-box-sizing: @boxmodel;
+       -moz-box-sizing: @boxmodel;
+            box-sizing: @boxmodel;
+}
+
+// User select
+// For selecting text on the page
+.hb-user-select(@select) {
+	-webkit-user-select: @select;
+       -moz-user-select: @select;
+         -o-user-select: @select;
+            user-select: @select;
+}
+
+// Resize anything
+.hb-resizable(@direction: both) {
+	resize: @direction; // Options: horizontal, vertical, both
+	overflow: auto; // Safari fix
+}
+
+// CSS3 Content Columns
+.hb-content-columns(@columnCount, @columnGap: @gridColumnGutter) {
+	-webkit-column-count: @columnCount;
+       -moz-column-count: @columnCount;
+            column-count: @columnCount;
+  	-webkit-column-gap: @columnGap;
+       -moz-column-gap: @columnGap;
+            column-gap: @columnGap;
+}
+
+// Opacity
+.hb-opacity(@opacity) {
+	-khtml-opacity: @opacity;
+ 	  -moz-opacity: @opacity;
+ 	       opacity: @opacity;
+	filter: e(%("alpha(opacity=%d)", @opacity * 100));
+}
+
+// Animation
+.hb-animation(@animation) {
+	-webkit-animation: @animation;
+	   -moz-animation: @animation;
+	    -ms-animation: @animation;
+	     -o-animation: @animation;
+	        animation: @animation;
+}
+
+// Placeholder color
+.hb-placeholder(@color) {
+	&.placeholder {
+		color: @color;
+	}
+
+	&:-moz-placeholder {
+		color: @color;
+	}
+
+	&::-webkit-input-placeholder {
+		color: @color;
+	}
+}
+
+
+// Shortcuts to native css function names
+.border-radius(@radius)		{ .hb-border-radius(@radius); }
+.box-shadow(@shadow)		{ .hb-box-shadow(@shadow); }
+.transition(@transition)	{ .hb-transition(@transition); }
+.transform(@t) 				{ .hb-transform(@t); }
+.background-clip(@clip)		{ .hb-background-clip(@clip); }
+.background-size(@size)		{ .hb-background-size(@size); }
+.box-sizing(@boxmodel)		{ .hb-box-sizing(@boxmodel); }
+.user-select(@select)		{ .hb-user-select(@select); }
+.opacity(@opacity)			{ .hb-opacity(@opacity); }
+.animation(@animation)		{ .hb-animation(@animation); }
+.placeholder(@color)		{ .hb-placeholder(@color); }
