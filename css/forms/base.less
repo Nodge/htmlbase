@@ -69,10 +69,14 @@ select,
 	display: inline-block;
 	width: 210px;
 	height: @baseLineHeight;
-	padding: 4px;
+	padding: 4px 6px;
 	margin-bottom: 9px;
 	border: 1px solid @inputBorderColor;
 	.hb-border-radius(3px);
+}
+
+.hb-textarea {
+	height: auto;
 }
 
 .hb-uneditable-textarea {
@@ -123,14 +127,15 @@ input[type="submit"] {
 // Set the height of select and file controls to match text inputs
 select,
 input[type="file"] {
-	height: 28px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+	height: 30px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
 	.ie6 &, .ie7 & { margin-top: 4px; } /* For IE7, add top margin to align select with labels */
-	line-height: 28px;
+	line-height: 30px;
 }
 
 // Chrome on Linux and Mobile Safari need background-color
 .hb-select {
   	width: 220px; // default input width + 10px of padding that doesn't get applied
+	height: 30px;
   	background-color: @selectBackgroundColor;
 }
 
@@ -168,3 +173,9 @@ input[type="hidden"] {
 // Placeholder text gets special styles; can't be bundled together though for some reason
 .hb-placeholder(@formPlaceholderColor);
 
+
+// Disable IE10 autoclear and show-password functions
+::-ms-clear,
+::-ms-reveal {
+	display: none;
+}
