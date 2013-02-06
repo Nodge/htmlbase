@@ -33,7 +33,15 @@
 	}
 }
 
+.hb-filter(@filter) when (@useIEFilters = 1) {
+	filter: @filter;
+}
+
+.hb-ms-filter(@filter) when (@useIEFilters = 1) {
+	-ms-filter: @filter;
+}
+
 // Reset filters for IE
-.hb-reset-filter() {
+.hb-reset-filter() when (@useIEFilters = 1) {
   	filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
 }

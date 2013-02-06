@@ -66,8 +66,8 @@
 
 .hb-flipH() {
 	.hb-transform(scaleX(-1));
-	-ms-filter: "FlipH";
-	    filter: FlipH;
+	.hb-filter(FlipH);
+	.hb-ms-filter("FlipH");
 }
 
 // Background clipping
@@ -123,7 +123,7 @@
 	-khtml-opacity: @opacity;
  	  -moz-opacity: @opacity;
  	       opacity: @opacity;
-	filter: e(%("alpha(opacity=%d)", @opacity * 100));
+	.hb-filter(e(%("alpha(opacity=%d)", @opacity * 100)));
 }
 
 // Animation
