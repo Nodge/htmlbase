@@ -25,12 +25,19 @@
 	// IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
 	&:active,
 	&.active {
-		.ie6 &, .ie7 &, .ie8 & {
+		.ie8 & {
 			background-color: darken(@endColor, 10%);
 		}
+
+		.hb-ie-buttonBackground();
 	}
 }
 
+.hb-ie-buttonBackground() when (@enableIEfixes = 1) {
+	.ie6 &, .ie7 & {
+		background-color: darken(@endColor, 10%);
+	}
+}
 
 // Mixin for form field states
 .hb-formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {

@@ -1,8 +1,6 @@
 // For clearing floats like a boss h5bp.com/q
 .hb-clearfix() {
-    .ie6 &, .ie7 & {
-		zoom: 1;
-	}
+	.hb-ie-clearfix();
 
 	&:before, &:after {
     	display: table;
@@ -14,4 +12,10 @@
   	&:after {
     	clear: both;
   	}
+}
+
+.hb-ie-clearfix() when (@enableIEfixes = 1) {
+	.ie6 &, .ie7 & {
+		zoom: 1;
+	}
 }

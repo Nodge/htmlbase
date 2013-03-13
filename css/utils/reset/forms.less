@@ -8,7 +8,10 @@ button, input, select, textarea {
 
 button, input {
 	line-height: normal; // FF3/4 have !important on line-height in UA stylesheet
+	.hb-ie-button-input();
+}
 
+.hb-ie-button-input() when (@enableIEfixes = 1) {
 	.ie6 &, .ie7 & {
 		overflow: visible; // Inner spacing ie IE6/7
 	}

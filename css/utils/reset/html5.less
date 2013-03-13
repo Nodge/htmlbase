@@ -8,11 +8,14 @@ footer, header, hgroup, nav, section {
 // Display block in IE6-9 and FF3
 audio, canvas, video {
  	display: inline-block;
+	.hb-ie-audio-video();
+}
 
- 	.ie6 &, .ie7 & {
-  		display: inline;
-      	zoom: 1;
-  	}
+.hb-ie-audio-video() when (@enableIEfixes = 1) {
+	.ie6 &, .ie7 & {
+		display: inline;
+		zoom: 1;
+	}
 }
 
 // Prevents modern browsers from displaying 'audio' without controls
@@ -33,7 +36,10 @@ button, input, select, textarea {
 
 button, input {
 	line-height: normal; // FF3/4 have !important on line-height in UA stylesheet
+	.hb-ie-html6-button-input();
+}
 
+.hb-ie-html6-button-input() when (@enableIEfixes) {
 	.ie6 &, .ie7 & {
 		overflow: visible; // Inner spacing ie IE6/7
 	}

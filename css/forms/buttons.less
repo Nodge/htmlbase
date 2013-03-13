@@ -63,9 +63,17 @@
   	//color: rgba(0,0,0,.5);
   	outline: 0;
 
-  	.ie6 &, .ie7 &, .ie8 & {
+  	.ie8 & {
     	background-color: darken(@buttonBackground, 15%);
     }
+
+	.hb-ie-btn-active();
+}
+
+.hb-ie-btn-active() when (@enableIEfixes = 1) {
+	.ie6 &, .ie7 & {
+		background-color: darken(@buttonBackground, 15%);
+	}
 }
 
 // Disabled state
@@ -190,8 +198,12 @@ input[type="submit"].hb-btn {
     	border: 0;
   	}
 
+	.hb-ie-btn();
+}
+
+.hb-ie-btn() when (@enableIEfixes = 1) {
 	.ie6 &, .ie7 & {
-		// IE7 has some default padding on button controls
+	// IE7 has some default padding on button controls
 		padding-top: 2px;
 		padding-bottom: 2px;
 
@@ -204,5 +216,5 @@ input[type="submit"].hb-btn {
 			padding-top: 3px;
 			padding-bottom: 3px;
 		}
-  	}
+	}
 }

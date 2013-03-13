@@ -47,11 +47,15 @@
 }
 
 .hb-input-prepend {
-  	.hb-add-on {
-  	    .ie6 &, .ie7 & {
-    		margin-top: 1px; /* IE6-7 */
-    	}
-  	}
+  	.hb-ie-input-prepend();
+}
+
+.hb-ie-input-prepend() when (@enableIEfixes = 1) {
+	.hb-add-on {
+		.ie6 &, .ie7 & {
+			margin-top: 1px; /* IE6-7 */
+		}
+	}
 }
 
 .hb-input-append {
@@ -71,15 +75,19 @@
     	.hb-border-radius(0 3px 3px 0);
   	}
 
-  	.hb-input:first-child {
-  	    .ie6 &, .ie7 & {
-    		// In IE7, having a hasLayout container (from clearfix's zoom:1) can make the first input
-    		// inherit the sum of its ancestors' margins.
-    		margin-left: -160px;
+	.hb-ie-input-append();
+}
 
-    		&+.hb-add-on {
-      			margin-left: -21px;
-    		}
-    	}
+.hb-ie-input-append() when (@enableIEfixes = 1) {
+	.hb-input:first-child {
+		.ie6 &, .ie7 & {
+		// In IE7, having a hasLayout container (from clearfix's zoom:1) can make the first input
+		// inherit the sum of its ancestors' margins.
+			margin-left: -160px;
+
+			&+.hb-add-on {
+				margin-left: -21px;
+			}
+		}
 	}
 }

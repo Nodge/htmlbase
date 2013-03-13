@@ -16,9 +16,17 @@
   	.hb-box-shadow(@shadow);
   	outline: 0;
 
-  	.ie6 &, .ie7 &, .ie8 & {
+  	.ie8 & {
   		outline: thin dotted; /* IE6-8 */
   	}
+
+	.hb-ie-input();
+}
+
+.hb-ie-input() when (@enableIEfixes = 1) {
+	.ie6 &, .ie7 & {
+		outline: thin dotted; /* IE6-8 */
+	}
 }
 
 .hb-input[type="file"]:focus,

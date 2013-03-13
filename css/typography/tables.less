@@ -60,9 +60,7 @@ table {
   	border-collapse: separate; // Done so we can round those corners!
   	.hb-border-radius(4px);
 
-	.ie6 &, .ie7 & {
-		border-collapse: collapsed; // IE7 can't round corners anyway
-	}
+	.hb-ie-table-bordered();
 
   	th + th,
   	td + td,
@@ -99,6 +97,12 @@ table {
   	tbody:last-child tr:last-child td:last-child {
     	.hb-border-radius(0 0 4px 0);
   	}
+}
+
+.hb-ie-table-bordered() when (@enableIEfixes = 1) {
+	.ie6 &, .ie7 & {
+		border-collapse: collapsed; // IE7 can't round corners anyway
+	}
 }
 
 

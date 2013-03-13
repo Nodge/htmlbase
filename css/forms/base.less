@@ -99,11 +99,15 @@ input[type="radio"] {
 	height: auto;
 	padding: 0;
 	margin: 3px 0;
-	.ie6 &, .ie7 & { margin-top: 0; } /* IE7 */
+	.hb-base-fix-input-margin();
 	line-height: normal;
 	border: 0;
 	cursor: pointer;
 	.hb-border-radius(0);
+}
+
+.hb-base-fix-input-margin() when (@enableIEfixes = 1) {
+	.ie6 &, .ie7 & { margin-top: 0; } /* IE7 */
 }
 
 // Reset the file input to browser defaults
@@ -128,8 +132,12 @@ input[type="submit"] {
 select,
 input[type="file"] {
 	height: 30px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
-	.ie6 &, .ie7 & { margin-top: 4px; } /* For IE7, add top margin to align select with labels */
+	.hb-base-fix-file-input-margin();
 	line-height: 30px;
+}
+
+.hb-base-fix-file-input-margin() when (@enableIEfixes = 1) {
+	.ie6 &, .ie7 & { margin-top: 4px; } /* For IE7, add top margin to align select with labels */
 }
 
 // Chrome on Linux and Mobile Safari need background-color
