@@ -5,6 +5,11 @@
 // Indent the labels to position radios/checkboxes as hanging
 .hb-radio, .hb-checkbox {
   	padding-left: 18px;
+
+	// return normal text color to label
+	.hb-label& {
+		color: @textColor;
+	}
 }
 
 .hb-radio input[type="radio"],
