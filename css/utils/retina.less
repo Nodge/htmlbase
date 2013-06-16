@@ -1,0 +1,16 @@
+
+.hb-retina(@path, @ext, @width: 0, @height: 0) {
+	@highdpi: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
+
+	background-image: url("@{path}.@{ext}");
+	//	@at2x_path: ~`@{path}.replace(/\.\w+$/, function(match) { return "@2x" + match; })`;
+
+	@media @highdpi {
+		background-image: url("@{path}@2x.@{ext}");
+		.size();
+	}
+
+	.size() when not (@width = 0), not (@height = 0) {
+		.background-size(@width @height);
+	}
+}
